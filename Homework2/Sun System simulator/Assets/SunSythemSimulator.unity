@@ -212,6 +212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Center: {fileID: 438686222}
   Speed: 13
+  RotateSpeed: 5
   X: 0
   Y: 3
   Z: 1
@@ -401,6 +402,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Center: {fileID: 438686222}
   Speed: 9
+  RotateSpeed: 5
   X: 0
   Y: 1
   Z: 3
@@ -626,6 +628,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Center: {fileID: 438686222}
   Speed: 10
+  RotateSpeed: 250
   X: 0
   Y: 1
   Z: 0
@@ -728,6 +731,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Center: {fileID: 438686222}
   Speed: 5
+  RotateSpeed: 7
   X: 0
   Y: 7
   Z: 2
@@ -917,6 +921,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Center: {fileID: 438686222}
   Speed: 35
+  RotateSpeed: 2430
   X: 0
   Y: 1
   Z: 2
@@ -1053,6 +1058,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Center: {fileID: 438686222}
   Speed: 47
+  RotateSpeed: 580
   X: 0
   Y: 1
   Z: 1
@@ -1295,6 +1301,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Center: {fileID: 438686222}
   Speed: 8
+  RotateSpeed: 8
   X: 0
   Y: 16
   Z: 2
@@ -1484,6 +1491,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Center: {fileID: 438686222}
   Speed: 24
+  RotateSpeed: 10
   X: 0
   Y: 2
   Z: 7
@@ -1819,6 +1827,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Center: {fileID: 438686222}
   Speed: 30
+  RotateSpeed: 10
   X: 0
   Y: 2
   Z: 1
