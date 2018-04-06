@@ -12,7 +12,7 @@
 根据课堂的知识，Unity引擎对物体运动的执行是复合的，如：我们给物体添加一个x轴方向的运动，再添加一个y轴方向的运动，那么物体将会沿着两个运动向量的复合方向运动。因此，要实现物体的抛物线运动，我们只需要根据简单的物理知识——抛物线运动是水平方向的匀速直线运动和竖直方向的变速直线运动的复合。
 接下来，我们就可以根据以上理论在Unity中模拟抛物线运动
 方法一：
-    ```
+```
     #修改Transform属性
     using System.Collections;
     using System.Collections.Generic;
@@ -39,9 +39,10 @@
             YSpeed += g * Time.deltaTime;   //Y轴速度变化
         }
     }
-    ```
+```
+
 方法二:
-    ```
+```
     #使用Vector3方法
     using System.Collections;
     using System.Collections.Generic;
@@ -67,9 +68,10 @@
             YSpeed -= g * Time.deltaTime; // Y轴速度变化
 	    }
 }
-    ```
+```
+
 方法三：
-    ```
+```
     #使用Transform方法
     using System.Collections;
     using System.Collections.Generic;
@@ -95,7 +97,7 @@
             this.transform.Translate(Vector3.down * Time.deltaTime * YSpeed);   //Y轴移动
             YSpeed += g * Time.deltaTime;   //Y轴速度变化
 	    }
-    ```
+```
 
 - 写一个程序，实现一个完整的太阳系， 其他星球围绕太阳的转速必须不一样，且不在一个法平面上
 考虑到太阳系中的星体太多，本次实验我们只取太阳与七大行星进行模拟。
