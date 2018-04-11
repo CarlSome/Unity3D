@@ -35,6 +35,7 @@ namespace Mygame
 
         public virtual void Start()
         {
+            //Debug.Log("ObejectAction.Start() called");
             throw new System.NotImplementedException();
         }
 
@@ -63,6 +64,9 @@ namespace Mygame
 
         public override void Update()
         {
+            Debug.Log("Object position updated");
+            Debug.Log("Old position: " + this.transform.position);
+            Debug.Log("New position: " + destination);
             this.transform.position = Vector3.MoveTowards(this.transform.position, destination, speed * Time.deltaTime);
             if (this.transform.position == destination)
             {
@@ -96,7 +100,6 @@ namespace Mygame
             if (this.currentAction >= sequence.Count)
             {
                 this.currentAction = 0;
-                //注意
                 if (repeat > 0)
                 {
                     repeat--;
@@ -190,7 +193,7 @@ namespace Mygame
             _action.callback = _callback;
             addList.Add(_action);
             _action.Start();
-            Debug.Log("action added");
+            //Debug.Log("action added");
         }
     }
 
@@ -207,7 +210,7 @@ namespace Mygame
 
         public void moveShip(ShipController ship)
         {
-            Debug.Log("Trying to move the boat");
+            //Debug.Log("Trying to move the boat");
             if (ship.isEmpty())
             {
                 return;
@@ -219,20 +222,20 @@ namespace Mygame
 
         public void moveCharacter(ICharacterController characterController, Vector3 destination)
         {
-            Debug.Log("Trying to move the character: " + characterController.getName());
+            //Debug.Log("Trying to move the character: " + characterController.getName());
             Vector3 currentPosition = characterController.getPosition();
-            Vector3 targetPosition = currentPosition;
+            Vector3 middlePosition = currentPosition;
             List<ObjectAction> actionList = new List<ObjectAction>();
 
             if (destination.y > currentPosition.y)
             {
-                targetPosition.y = destination.y;
+                middlePosition.y = destination.y;
             }
             else
             {
-                targetPosition.x = destination.x;
+                middlePosition.x = destination.x;
             }
-            ObjectAction action1 = MoveAction.getAction(targetPosition, 20f);
+            ObjectAction action1 = MoveAction.getAction(middlePosition, 20f);
             actionList.Add(action1);
             ObjectAction action2 = MoveAction.getAction(destination, 20f);
             actionList.Add(action2);

@@ -221,21 +221,6 @@ public class ShipController
     };
     direction moveDirection;
 
-    //后面再看其实要不要加这个东西
-    //GameObject cameraObject;
-    //GameObject lightObject;
-    /*
-    private void attachCamera()
-    {
-
-    }
-
-    private void attachLight()
-    {
-
-    }
-    */
-
     public ShipController()
     {
         moveDirection = direction.left;
@@ -279,12 +264,10 @@ public class ShipController
     {
         if (moveDirection == direction.right)
         {
-            //moveControllerScript.setDestination(beginPosition);
             moveDirection = direction.left;
         }
         else
         {
-            //moveControllerScript.setDestination(endPosition);
             moveDirection = direction.right;
         }
     }
@@ -452,19 +435,14 @@ public class ICharacterController
         {
             character = Object.Instantiate(Resources.Load("Prefabs/Priests", typeof(GameObject)), Vector3.zero, Quaternion.identity, null) as GameObject;
             characterType = CharacterType.priest;
-            //这个暂时不知道干嘛的
-            character.GetComponent<Renderer>().material.color = Color.white;
         }
         else
         {
             character = Object.Instantiate(Resources.Load("Prefabs/Devils", typeof(GameObject)), Vector3.zero, Quaternion.identity, null) as GameObject;
             characterType = CharacterType.devil;
-            //这个暂时不知道干嘛的
-            character.GetComponent<Renderer>().material.color = Color.red;
         }
 
         //moveControllerScript = character.AddComponent(typeof(MoveController)) as MoveController;
-
         clickGUI = character.AddComponent(typeof(ClickGUI)) as ClickGUI;
         clickGUI.setController(this);
     }
@@ -529,6 +507,7 @@ public class ICharacterController
     {
         bankController = null;
         character.transform.parent = shipController.getShip().transform;
+        //Debug.Log(this.getName() + "get on ship");
         isOnShip = true;
     }
 
@@ -536,6 +515,7 @@ public class ICharacterController
     {
         bankController = _bankController;
         character.transform.parent = null;
+        //Debug.Log(this.getName() + "get on bank");
         isOnShip = false;
     }
 
