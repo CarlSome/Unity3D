@@ -50,7 +50,7 @@ namespace Mygame
         public float speed;
 
         public override void Start() {
-            Debug.Log("MoveAction on");
+            //Debug.Log("MoveAction on");
         }
 
         public static MoveAction getAction(Vector3 _destination, float _speed)
@@ -148,7 +148,7 @@ namespace Mygame
 
         public void Start()
         {
-            Debug.Log("ActionManager on");
+            //Debug.Log("ActionManager on");
         }
         public void actionDone(ObjectAction source) { }
 
@@ -188,15 +188,26 @@ namespace Mygame
             _action.gameObject = _gameObject;
             _action.transform = gameObject.transform;
             _action.callback = _callback;
-            _action.Start();
             addList.Add(_action);
+            _action.Start();
+            Debug.Log("action added");
         }
     }
 
-    public class ActionList : ActionManager
+    public class FirstSceneActionManager : ActionManager
     {
+
+        /*
+         * debug用
+        public void detector()
+        {
+            Debug.Log("ActionList exist");
+        }
+        */
+
         public void moveShip(ShipController ship)
         {
+            Debug.Log("Trying to move the boat");
             if (ship.isEmpty())
             {
                 return;
@@ -208,9 +219,9 @@ namespace Mygame
 
         public void moveCharacter(ICharacterController characterController, Vector3 destination)
         {
-            Debug.Log("Trying to move the character");
+            Debug.Log("Trying to move the character: " + characterController.getName());
             Vector3 currentPosition = characterController.getPosition();
-            Vector3 targetPosition = characterController.getPosition();
+            Vector3 targetPosition = currentPosition;
             List<ObjectAction> actionList = new List<ObjectAction>();
 
             if (destination.y > currentPosition.y)

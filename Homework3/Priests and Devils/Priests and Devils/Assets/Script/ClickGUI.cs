@@ -21,12 +21,12 @@ public class ClickGUI : MonoBehaviour {
     {
         if(gameObject.name == "ship")
         {
-            Debug.Log("Ship is clicked");
+            //Debug.Log("Ship is clicked");
             action.moveShip();
         }
         else
         {
-            Debug.Log("Character is clicked");
+            //Debug.Log("Character is clicked");
             action.characterIsClicked(characterController);
         }
     }

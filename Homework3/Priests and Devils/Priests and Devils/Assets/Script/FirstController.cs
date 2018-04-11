@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Mygame;
+using System;
 
 public class FirstController : MonoBehaviour, ISceneController, IUserAction
 {
@@ -11,20 +12,16 @@ public class FirstController : MonoBehaviour, ISceneController, IUserAction
     public BankController endBank;
     public ShipController ship;
     public ICharacterController[] characters;
-    private ActionList actionManager;
+    public FirstSceneActionManager actionManager;
 
     void Awake()
     {
         SSDirector director = SSDirector.getInstance();
         director.currentSceneController = this;
         userGUI = gameObject.AddComponent<UserGUI>() as UserGUI;
+        actionManager = gameObject.AddComponent<FirstSceneActionManager>() as FirstSceneActionManager;
         characters = new ICharacterController[6];
         loadResources();
-    }
-
-    void Start()
-    {
-        actionManager = GetComponent<ActionList>();
     }
 
     public void loadResources()
@@ -159,7 +156,8 @@ public class FirstController : MonoBehaviour, ISceneController, IUserAction
             //Debug.Log("Characeter found");
             //Debug.Log(characterController.getName());
             whichBank.getOffBank(characterController.getName());
-            if(ship != null)
+            /*
+            if (ship != null)
             {
                 Debug.Log("exist");
             }
@@ -167,6 +165,17 @@ public class FirstController : MonoBehaviour, ISceneController, IUserAction
             {
                 Debug.Log("not exist");
             }
+            try
+            {
+                characterController.setName("carl");
+            }
+            catch (NullReferenceException ex)
+            {
+                Debug.Log("characterController was not set in the inspector");
+            }
+            Debug.Log(characterController.getName());
+            */
+            //actionManager.detector();
             actionManager.moveCharacter(characterController, ship.getEmptyPosition());
             //characterController.moveToPosition(ship.getEmptyPosition());
             characterController.getOnShip(ship);
