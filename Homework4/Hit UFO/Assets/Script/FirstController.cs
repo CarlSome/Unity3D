@@ -30,7 +30,7 @@ public class FirstController : MonoBehaviour, ISceneController, IUserAction {
     public int totalRound = 3;
     private int round = 0;
     private int UFONumber = 10;
-    private float interval = 0;
+    private float interval = 2;
 
     private GameState gameState = GameState.START;
 
@@ -54,7 +54,6 @@ public class FirstController : MonoBehaviour, ISceneController, IUserAction {
 
     private void Update()
     {
-        /*
         if(actionManager.UFONumber == 0)
         {
             if(gameState == GameState.PLAYING)
@@ -65,12 +64,14 @@ public class FirstController : MonoBehaviour, ISceneController, IUserAction {
             if (gameState == GameState.ROUND_START)
             {
                 //修改难度需要调节这里
-                round = (round + 1) % totalRound;
+                //round = (round + 1) % totalRound;
+                round = (round + 1) % 3;
                 NextRound();
                 actionManager.RefillUFO();
                 gameState = GameState.PLAYING;
             }
-        }*/
+        }
+        /*
         if(actionManager.UFONumber == 0 && gameState == GameState.PLAYING)
         {
             gameState = GameState.ROUND_FINISH;
@@ -78,13 +79,13 @@ public class FirstController : MonoBehaviour, ISceneController, IUserAction {
 
         if(actionManager.UFONumber == 0 && gameState == GameState.ROUND_START)
         {
-            Debug.Log("totalRound = " + totalRound);
             //round = (round + 1) % totalRound;
             round = (round + 1) % 3;
             NextRound();
             actionManager.RefillUFO();
             gameState = GameState.PLAYING;
         }
+        */
 
         if(interval > 1)
         {

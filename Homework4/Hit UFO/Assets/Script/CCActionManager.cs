@@ -39,6 +39,7 @@ public class CCActionManager : SSActionManager, ISSActionCallback
         return action;
     }
 
+    /*
     public void FreeSSAction(SSAction action)
     {
         foreach(SSAction i in usingList)
@@ -51,6 +52,25 @@ public class CCActionManager : SSActionManager, ISSActionCallback
             }
         }
     }
+    */
+    public void FreeSSAction(SSAction action)
+    {
+        SSAction tmpUFO = null;
+        foreach(SSAction i in usingList)
+        {
+            if(action.GetInstanceID() == i.GetInstanceID())
+            {
+                tmpUFO = i;
+            }
+        }
+        if(tmpUFO != null)
+        {
+            tmpUFO.Reset();
+            freeList.Add(tmpUFO);
+            usingList.Remove(tmpUFO);
+        }
+    }
+   
 
     public void RefillUFO()
     {

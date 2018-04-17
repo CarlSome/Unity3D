@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class UserGUI : MonoBehaviour {
-    /*
     private IUserAction action;
+    bool firstTime = true;
     GUIStyle style;
     GUIStyle buttonStyle;
 
@@ -21,39 +21,29 @@ public class UserGUI : MonoBehaviour {
 
     private void OnGUI()
     {
-        
-    }*/
-    private IUserAction action;
-    bool isFirst = true;
-    // Use this for initialization  
-    void Start()
-    {
-        action = Director.GetInstance().currentSceneController as IUserAction;
-
-    }
-
-    private void OnGUI()
-    {
-        if (Input.GetButtonDown("Fire1"))
+        if(Input.GetButton("Fire1"))
         {
-
-            Vector3 pos = Input.mousePosition;
-            action.Shoot(pos);
-
+            Vector3 position = Input.mousePosition;
+            action.Shoot(position);
         }
 
-        GUI.Label(new Rect(1000, 0, 400, 400), action.GetScore().ToString());
-
-        if (isFirst && GUI.Button(new Rect(700, 100, 90, 90), "Start"))
+        if(firstTime == true)
         {
-            isFirst = false;
-            action.SetGameState(GameState.ROUND_START);
+            if (GUI.Button(new Rect(Screen.width / 2 - 50, Screen.height / 2 - 50, 100, 100), "Start"))
+            {
+                firstTime = false;
+                action.SetGameState(GameState.ROUND_START);
+            }
         }
 
-        if (!isFirst && action.GetGameState() == GameState.ROUND_FINISH && GUI.Button(new Rect(700, 100, 90, 90), "Next Round"))
+        if(firstTime == false && action.GetGameState() == GameState.ROUND_FINISH)
         {
-            action.SetGameState(GameState.ROUND_START);
+            if(GUI.Button(new Rect(Screen.width / 2 - 50, Screen.height / 2 - 50, 100, 100), "Next Round"))
+            {
+                action.SetGameState(GameState.ROUND_START);
+            }
         }
 
+        GUI.Label(new Rect(0, 0, 400, 400), action.GetScore().ToString());
     }
 }
