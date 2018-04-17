@@ -61,10 +61,6 @@ public class UFOFactory : MonoBehaviour {
             round = 0;
         }
 
-        /** 
-         * 根据回合数来生成相应的飞碟 
-         */
-
         switch (round)
         {
 

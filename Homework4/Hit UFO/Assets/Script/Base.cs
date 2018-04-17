@@ -19,7 +19,6 @@ public enum GameState
 //用户动作接口
 public interface IUserAction
 {
-    void GameOver();
     void SetGameState(GameState _gamestate);  //_gamestate: 0-游戏开始 1-游戏暂停 2-游戏结束 3-回合开始 4-回合结束 
     GameState GetGameState();
     int GetScore();

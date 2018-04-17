@@ -28,9 +28,9 @@ public class FirstController : MonoBehaviour, ISceneController, IUserAction {
     //public UFOFactory factory;
     public Queue<GameObject> UFOQueue = new Queue<GameObject>();
     public int totalRound = 3;
-    private int round = 0;
+    private int round = -1;
     private int UFONumber = 10;
-    private float interval = 2;
+    private float interval = 1;
 
     private GameState gameState = GameState.START;
 
@@ -49,6 +49,7 @@ public class FirstController : MonoBehaviour, ISceneController, IUserAction {
 
     public void LoadResource()
     {
+        GameObject GreenPlane = GameObject.Instantiate(Resources.Load("Prefabs/Terrian", typeof(GameObject)), new Vector3(-286,-5,0), Quaternion.identity, null) as GameObject;
         //GameObject terrian = GameObject.Instantiate(Resources.Load("Prefabs/Terrain")) as GameObject;
     }
 
@@ -155,13 +156,8 @@ public class FirstController : MonoBehaviour, ISceneController, IUserAction {
             if(shoot.collider.gameObject.GetComponent<UFOObject>() != null)
             {
                 scoreController.Count(shoot.collider.gameObject);
-                shoot.collider.gameObject.transform.position = new Vector3(0, -10, 0);
+                shoot.collider.gameObject.transform.position = new Vector3(0, -1000, 0);
             }
         }
-    }
-
-    public void GameOver()
-    {
-        GUI.Label(new Rect(700,300,400,400), "GameOver");
     }
 }

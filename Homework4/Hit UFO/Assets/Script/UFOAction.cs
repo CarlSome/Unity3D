@@ -30,7 +30,7 @@ public class UFOAction : SSAction {
         transform.Translate(direction * xSpeed * Time.deltaTime);
         transform.Translate(Vector3.down * gravity * time * Time.deltaTime);
 
-        if(this.transform.position.y < 0)
+        if(this.transform.position.y < -5)
         {
             this.destory = true;
             this.enable = false;

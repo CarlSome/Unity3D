@@ -29,7 +29,7 @@ public class UserGUI : MonoBehaviour {
 
         if(firstTime == true)
         {
-            if (GUI.Button(new Rect(Screen.width / 2 - 50, Screen.height / 2 - 50, 100, 100), "Start"))
+            if (GUI.Button(new Rect(Screen.width / 2 - 50, Screen.height / 2 - 50, 100, 60), "Start"))
             {
                 firstTime = false;
                 action.SetGameState(GameState.ROUND_START);
@@ -38,12 +38,12 @@ public class UserGUI : MonoBehaviour {
 
         if(firstTime == false && action.GetGameState() == GameState.ROUND_FINISH)
         {
-            if(GUI.Button(new Rect(Screen.width / 2 - 50, Screen.height / 2 - 50, 100, 100), "Next Round"))
+            if(GUI.Button(new Rect(Screen.width / 2 - 50, Screen.height / 2 - 50, 100, 60), "Next Round"))
             {
                 action.SetGameState(GameState.ROUND_START);
             }
         }
 
-        GUI.Label(new Rect(0, 0, 400, 400), action.GetScore().ToString());
+        GUI.Label(new Rect(0, 0, 400, 400), "Score: " + action.GetScore().ToString());
     }
 }
