@@ -26,15 +26,18 @@ public class UFOAction : SSAction {
 
     public override void Update()
     {
-        time += Time.deltaTime;
-        transform.Translate(direction * xSpeed * Time.deltaTime);
-        transform.Translate(Vector3.down * gravity * time * Time.deltaTime);
-
-        if(this.transform.position.y < -5)
+        if(gameObject.activeSelf)
         {
-            this.destory = true;
-            this.enable = false;
-            this.callback.SSActionEvent(this);
+            time += Time.deltaTime;
+            transform.Translate(direction * xSpeed * Time.deltaTime);
+            transform.Translate(Vector3.down * gravity * time * Time.deltaTime);
+
+            if (this.transform.position.y < -5)
+            {
+                this.destory = true;
+                this.enable = false;
+                this.callback.SSActionEvent(this);
+            }
         }
     }
 }

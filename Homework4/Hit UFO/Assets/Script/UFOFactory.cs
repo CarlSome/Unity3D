@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class UFOFactory : MonoBehaviour {
 
-    List<UFOObject> usingList;
-    List<UFOObject> freeList;
+    List<UFOObject> usingList = new List<UFOObject>();
+    List<UFOObject> freeList = new List<UFOObject>();
     GameObject UFOPrefab;
-    private static UFOFactory instance;
 
+    /*
+    private static UFOFactory instance;
     public static UFOFactory GetInstance()
     {
         if(instance == null)
@@ -17,12 +18,10 @@ public class UFOFactory : MonoBehaviour {
         }
         return instance;
     }
+    */
 
     private void Awake()
     {
-        usingList = new List<UFOObject>();
-        freeList = new List<UFOObject>();
-
         UFOPrefab = Object.Instantiate(Resources.Load("Prefabs/UFO", typeof(GameObject))) as GameObject;
         UFOPrefab.SetActive(false);
     }
@@ -30,6 +29,7 @@ public class UFOFactory : MonoBehaviour {
 
     public GameObject getUFO(int round)
     {
+        Debug.Log("生成一个飞碟");
         GameObject newUFO = null;
         if(freeList.Count > 0)
         {
@@ -40,6 +40,7 @@ public class UFOFactory : MonoBehaviour {
         {
             newUFO = Object.Instantiate(Resources.Load("Prefabs/UFO", typeof(GameObject)), Vector3.zero, Quaternion.identity) as GameObject;
             newUFO.AddComponent<UFOObject>();
+            newUFO.SetActive(false);
         }
 
         //难度测试Demo
@@ -67,27 +68,33 @@ public class UFOFactory : MonoBehaviour {
             case 0:
                 {
                     newUFO.GetComponent<UFOObject>().SetUFOColor(Color.white);
-                    newUFO.GetComponent<UFOObject>().SetUFOSpeed(4.0f);
-                    float RanX = UnityEngine.Random.Range(-1f, 1f) < 0 ? -1 : 1;
-                    newUFO.GetComponent<UFOObject>().SetUFODirection(new Vector3(RanX, 1, 0));
+                    float speed = UnityEngine.Random.Range(6f, 8f);
+                    newUFO.GetComponent<UFOObject>().SetUFOSpeed(speed);
+                    float RanX = UnityEngine.Random.Range(-1f, 1f);
+                    float RanY = UnityEngine.Random.Range(0.5f, 2f);
+                    newUFO.GetComponent<UFOObject>().SetUFODirection(new Vector3(RanX, RanY, 0));
                     newUFO.GetComponent<Renderer>().material.color = Color.white;
                     break;
                 }
             case 1:
                 {
                     newUFO.GetComponent<UFOObject>().SetUFOColor(Color.yellow);
-                    newUFO.GetComponent<UFOObject>().SetUFOSpeed(6.0f);
-                    float RanX = UnityEngine.Random.Range(-1f, 1f) < 0 ? -1 : 1;
-                    newUFO.GetComponent<UFOObject>().SetUFODirection(new Vector3(RanX, 1, 0));
+                    float speed = UnityEngine.Random.Range(8f, 10f);
+                    newUFO.GetComponent<UFOObject>().SetUFOSpeed(speed);
+                    float RanX = UnityEngine.Random.Range(-1f, 1f);
+                    float RanY = UnityEngine.Random.Range(0.5f, 2f);
+                    newUFO.GetComponent<UFOObject>().SetUFODirection(new Vector3(RanX, RanY, 0));
                     newUFO.GetComponent<Renderer>().material.color = Color.yellow;
                     break;
                 }
             case 2:
                 {
                     newUFO.GetComponent<UFOObject>().SetUFOColor(Color.red);
-                    newUFO.GetComponent<UFOObject>().SetUFOSpeed(8.0f);
-                    float RanX = UnityEngine.Random.Range(-1f, 1f) < 0 ? -1 : 1;
-                    newUFO.GetComponent<UFOObject>().SetUFODirection(new Vector3(RanX, 1, 0));
+                    float speed = UnityEngine.Random.Range(10f, 12f);
+                    newUFO.GetComponent<UFOObject>().SetUFOSpeed(speed);
+                    float RanX = UnityEngine.Random.Range(-1f, 1f);
+                    float RanY = UnityEngine.Random.Range(0.5f, 2f);
+                    newUFO.GetComponent<UFOObject>().SetUFODirection(new Vector3(RanX, RanY, 0));
                     newUFO.GetComponent<Renderer>().material.color = Color.red;
                     break;
                 }

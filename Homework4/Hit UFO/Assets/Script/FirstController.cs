@@ -50,11 +50,11 @@ public class FirstController : MonoBehaviour, ISceneController, IUserAction {
     public void LoadResource()
     {
         GameObject GreenPlane = GameObject.Instantiate(Resources.Load("Prefabs/Terrian", typeof(GameObject)), new Vector3(-286,-5,0), Quaternion.identity, null) as GameObject;
-        //GameObject terrian = GameObject.Instantiate(Resources.Load("Prefabs/Terrain")) as GameObject;
     }
 
     private void Update()
     {
+        //Debug.Log("Interval = " + interval);
         if(actionManager.UFONumber == 0)
         {
             if(gameState == GameState.PLAYING)
@@ -72,24 +72,10 @@ public class FirstController : MonoBehaviour, ISceneController, IUserAction {
                 gameState = GameState.PLAYING;
             }
         }
-        /*
-        if(actionManager.UFONumber == 0 && gameState == GameState.PLAYING)
-        {
-            gameState = GameState.ROUND_FINISH;
-        }
 
-        if(actionManager.UFONumber == 0 && gameState == GameState.ROUND_START)
+        if(interval > 2)
         {
-            //round = (round + 1) % totalRound;
-            round = (round + 1) % 3;
-            NextRound();
-            actionManager.RefillUFO();
-            gameState = GameState.PLAYING;
-        }
-        */
-
-        if(interval > 1)
-        {
+            Debug.Log("发射");
             Launch();
             interval = 0;
         }
@@ -103,9 +89,9 @@ public class FirstController : MonoBehaviour, ISceneController, IUserAction {
     {
         if(UFOQueue.Count != 0)
         {
-            GameObject UFO = UFOQueue.Dequeue();
-            UFO.transform.position = GetRandomPosition(UFO);
-            UFO.SetActive(true);
+                GameObject UFO = UFOQueue.Dequeue();
+                UFO.transform.position = GetRandomPosition(UFO);
+                UFO.SetActive(true);
         }
     }
 
@@ -159,5 +145,21 @@ public class FirstController : MonoBehaviour, ISceneController, IUserAction {
                 shoot.collider.gameObject.transform.position = new Vector3(0, -1000, 0);
             }
         }
+    }
+
+    //测试项
+    public void setGameState(GameState _gameState)
+    {
+        gameState = _gameState;
+    }
+
+    public GameState getGameState()
+    {
+        return gameState;
+    }
+    public void GameOver()
+    {
+        GUI.color = Color.red;
+        GUI.Label(new Rect(700, 300, 400, 400), "GAMEOVER");
     }
 }
