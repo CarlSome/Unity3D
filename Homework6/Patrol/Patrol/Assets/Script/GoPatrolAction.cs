@@ -25,9 +25,11 @@ public class GoPatrolAction : SSAction {
 
     public override void Update()
     {
-        Gopatrol();
-
-        if (patrol.follow)
+        if(patrol.follow == false)
+        {
+            Gopatrol();
+        }
+        else
         {
             this.destroy = true;
             this.callback.SSActionEvent(this, 0, this.gameObject);

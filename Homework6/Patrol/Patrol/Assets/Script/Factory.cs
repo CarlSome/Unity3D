@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Factory : MonoBehaviour {
 
-    public FirstSceneController firstSceneController;
-
     private List<GameObject> usingPatrolList;
     private GameObject patorl;
     private Vector3[] patorlPosition;

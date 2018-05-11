@@ -320,7 +320,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aced4522ada5fb8489d91ea3b8426162, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstSceneController: {fileID: 0}
 --- !u!114 &2103136645
 MonoBehaviour:
   m_ObjectHideFlags: 0

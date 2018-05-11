@@ -7,11 +7,11 @@ public class PatrolFollow : SSAction {
 
     private float speed = 5f;
     private GameObject player;
-    private Patrol data;
+    private Patrol patrol;
 
     public override void Start()
     {
-        data = this.gameObject.GetComponent<Patrol>();
+        patrol = this.gameObject.GetComponent<Patrol>();
     }
 
     public override void Update()
@@ -26,7 +26,7 @@ public class PatrolFollow : SSAction {
 
         Follow();
 
-        if (data.follow == false)
+        if (patrol.follow == false)
         {
             this.destroy = true;
             this.callback.SSActionEvent(this, 1, this.gameObject);

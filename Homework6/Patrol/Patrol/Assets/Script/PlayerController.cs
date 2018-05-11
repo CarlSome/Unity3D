@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace CompleteProject
-{
     public class PlayerController : MonoBehaviour
     {
         public float speed = 6f;            // The speed that the player will move at.
@@ -90,4 +88,3 @@ namespace CompleteProject
             anim.SetBool("IsWalking", walking);
         }
     }
-}
