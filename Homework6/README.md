@@ -28,9 +28,9 @@
 
 ## 游戏效果
 
-[图片]
+![游戏截图](https://github.com/CarlSome/Unity3D/blob/master/Homework6/%E6%88%AA%E5%9B%BE/%E6%B8%B8%E6%88%8F%E6%88%AA%E5%9B%BE.png?raw=true)
 
-视频链接：
+视频链接：https://pan.baidu.com/s/1zUb6sUbaek0sqvt6lf12RA
 
 ---
 
@@ -42,7 +42,7 @@
 
     巡逻兵使用了官方教程的模型与动画。在此基础上添加一个Sphere Collider以检测玩家是否进入范围。
 
-[图片]
+![Patrol预制](https://raw.githubusercontent.com/CarlSome/Unity3D/master/Homework6/%E6%88%AA%E5%9B%BE/Patrol%E9%A2%84%E5%88%B6.png)
 
 巡逻兵相关代码：
 
@@ -282,7 +282,7 @@ public class PatrolFollow : SSAction {
 
 玩家同样使用了官方教程的模型与动画。因为资源已为模型添加了Capsule Collider，我们添加其他东西。
 
-[图片]
+![Player预制](https://github.com/CarlSome/Unity3D/blob/master/Homework6/%E6%88%AA%E5%9B%BE/Player%E9%A2%84%E5%88%B6.png?raw=true)
 
 玩家相关代码：
 
